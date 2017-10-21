@@ -74,41 +74,41 @@ export default {
       }
     },
     /*图片预加载*/
-    preload: function(arr) {
-        var newimages = [], loadedimages = 0;
-        var postaction = function(){};
-        var arr = (typeof arr != "object") ? [arr] : arr;
+    // preload: function(arr) {
+    //     var newimages = [], loadedimages = 0;
+    //     var postaction = function(){};
+    //     var arr = (typeof arr != "object") ? [arr] : arr;
 
-        function imageloadpost() {
-            loadedimages++;
-            if (loadedimages == arr.length) {
-                //alert("图片已经加载完成");
-                postaction(newimages);
-            }
-        }
+    //     function imageloadpost() {
+    //         loadedimages++;
+    //         if (loadedimages == arr.length) {
+    //             //alert("图片已经加载完成");
+    //             postaction(newimages);
+    //         }
+    //     }
 
-        for (var i = 0; i < arr.length; i++) {
-            newimages[i] = new Image();
-            newimages[i].src = arr[i];
+    //     for (var i = 0; i < arr.length; i++) {
+    //         newimages[i] = new Image();
+    //         newimages[i].src = arr[i];
 
-            if(newimages[i].complete){
-              imageloadpost();
-            }else{
-              newimages[i].onload = function() {
-                  imageloadpost();
-              }
-              newimages[i].onerror = function() {
-                  imageloadpost();
-              }
-            }
-        }
+    //         if(newimages[i].complete){
+    //           imageloadpost();
+    //         }else{
+    //           newimages[i].onload = function() {
+    //               imageloadpost();
+    //           }
+    //           newimages[i].onerror = function() {
+    //               imageloadpost();
+    //           }
+    //         }
+    //     }
 
-        return {
-            done: function(f) {
-                postaction = f || postaction;
-            }
-        }
-    },
+    //     return {
+    //         done: function(f) {
+    //             postaction = f || postaction;
+    //         }
+    //     }
+    // },
     loadMore: function() {
         if(this.busy){
            return;

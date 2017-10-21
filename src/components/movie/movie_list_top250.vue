@@ -39,6 +39,7 @@ export default {
   },
   computed:{
     spinnerClass(){
+      // console.log(this.$store.getters.SPINNER_CLASS)
       return this.$store.getters.SPINNER_CLASS
     }
   },
