@@ -32,7 +32,11 @@ export default {
     	console.log(1)
     },
     backToTop(){
-    	this.$el.querySelector(".j-container").scrollTop = 0;
+    	// this.$el.querySelector(".j-container").scrollTop = 0;
+    	let movieElm = this.$el.querySelectorAll(".j-container");
+    	for(let i=0;i<movieElm.length;i++){
+    		movieElm[i].scrollTop = 0;
+    	}
     }
 
   },
