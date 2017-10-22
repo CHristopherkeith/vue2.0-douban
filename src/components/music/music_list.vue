@@ -168,7 +168,8 @@ export default {
   		  	});
 
   		  	// 存储当前列表到本地
-  		  	Store.set('music_list_'+this.$route.params.id, res.data.result.tracks);
+  		  	// Store.set('music_list_'+this.$route.params.id, res.data.result.tracks);
+          Store.set('music_list_'+this.$route.params.listId, res.data.result.tracks);
 
           // 隐藏加载图标
           this.spinnerFlag = false;
