@@ -30,6 +30,10 @@
 		      <div class="progress" :style="{ 'width': audioProgress}" v-show="music.playing"></div>
 		    </md-list-item>
 		</md-list>
+    <md-dialog-alert
+      :md-content="alertContent"
+      ref="info">
+    </md-dialog-alert>
 	</md-theme> 
 </div>
 	
@@ -51,7 +55,8 @@ export default {
 		id: this.$route.params.listId,
 		flag: true,
 		searchList:[],
-    spinnerFlag: false
+    spinnerFlag: false,
+    alertContent: '播放地址无效'
 	};
   },
   computed:{
@@ -187,6 +192,12 @@ export default {
     goPlay(index){
     	// 如果为搜索列表
     	if(!this.flag){
+        // 判断播放地址是否有效
+        if(!this.searchList[index].mp3Url){
+          // alert('播放地址无效')
+          this.$refs.info.open();
+          return
+        }
     		/*存储当前歌曲数据到本地*/
 	    	Store.set("activeSong", {
           id: this.searchList[index].id,
@@ -211,6 +222,12 @@ export default {
     	}
     	// 如果为专辑列表
     	else{
+        // 判断播放地址是否有效
+        if(!this.activeList[index].mp3Url){
+          this.$refs.info.open();
+          return
+        }
+
     		/*存储当前歌曲数据到本地*/
 	    	Store.set("activeSong", {
           id: this.activeList[index].id,
@@ -248,9 +265,12 @@ export default {
       })
 
     	/*跳转*/
-    	this.$router.push({name:'music-play',params:{
-    		songId: this.activeList[index].id}
-    	})
+      
+      this.$router.push({name:'music-play',params:{
+        songId: this.activeList[index].id}
+      })
+      
+    	
 
     	
     }

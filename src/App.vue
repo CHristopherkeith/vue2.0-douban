@@ -70,6 +70,8 @@ export default {
     },
     playing(val){
       if(val){
+        console.log('233333333333')
+        console.log(this.$refs)
         this.$refs.music.play()
       } else{
         this.$refs.music.pause()
@@ -85,7 +87,8 @@ export default {
       }
       console.log(preSrc+"!!!!!"+newSrc);
       this.$refs.music.play().catch(function(e){
-        this.openDialog('info');
+        console.log(e)
+        // this.openDialog('info');
       }.bind(this))
     }
   
