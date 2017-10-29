@@ -51,13 +51,13 @@ export default {
   	headerBack: HeaderBack
   },
   data() {
-	return {
-		id: this.$route.params.listId,
-		flag: true,
-		searchList:[],
-    spinnerFlag: false,
-    alertContent: '播放地址无效'
-	};
+  	return {
+  		id: this.$route.params.listId,
+  		flag: true,
+  		searchList:[],
+      spinnerFlag: false,
+      alertContent: '播放地址无效'
+  	};
   },
   computed:{
     theme(){
@@ -193,11 +193,10 @@ export default {
     	// 如果为搜索列表
     	if(!this.flag){
         // 判断播放地址是否有效
-        if(!this.searchList[index].mp3Url){
-          // alert('播放地址无效')
-          this.$refs.info.open();
-          return
-        }
+        // if(!this.searchList[index].mp3Url){
+        //   this.$refs.info.open();
+        //   return
+        // }
     		/*存储当前歌曲数据到本地*/
 	    	Store.set("activeSong", {
           id: this.searchList[index].id,
@@ -223,10 +222,10 @@ export default {
     	// 如果为专辑列表
     	else{
         // 判断播放地址是否有效
-        if(!this.activeList[index].mp3Url){
-          this.$refs.info.open();
-          return
-        }
+        // if(!this.activeList[index].mp3Url){
+        //   this.$refs.info.open();
+        //   return
+        // }
 
     		/*存储当前歌曲数据到本地*/
 	    	Store.set("activeSong", {

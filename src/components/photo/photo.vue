@@ -3,7 +3,7 @@
   <div class="j-content">
 		<div class="m-gallery">
       <transition-group name="fade" tag="div">
-        <div v-for="(photo,index) in photoLists" :key="photo" class="item" @click="getPhotoDetail(index)">
+        <div v-for="(photo,index) in photoLists" :key="index" class="item" @click="getPhotoDetail(index)">
             <img class="animated bounceIn" :src="photo.url">
         </div>
       </transition-group>
@@ -131,6 +131,7 @@ export default {
 
               this.photoLists.push(photo);
           })
+          console.log(this.photoLists)
           this.busy = false;
           this.spinnerFlag = false;
           this.page++;

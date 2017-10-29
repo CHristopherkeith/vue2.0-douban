@@ -46,7 +46,7 @@ export default {
   	this.scrContainer = this.$el;
     this.scrContent = this.$el.querySelector(".j-content")
     this.eleH = this.scrContent.offsetHeight;
-    console.log(this.loadMore());
+    this.loadMore();
     this.scrContainer.addEventListener('scroll', function(e){
       if(this.isTouchScreenBtm(e)){
         this.loadMore();

@@ -88,7 +88,7 @@ export default {
       console.log(preSrc+"!!!!!"+newSrc);
       this.$refs.music.play().catch(function(e){
         console.log(e)
-        // this.openDialog('info');
+        this.openDialog('info');
       }.bind(this))
     }
   
