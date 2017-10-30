@@ -212,6 +212,8 @@ export default {
 	    	this.$store.commit('MUSIC_SONG_CHANGE',{
           id: this.searchList[index].id,
 	    		albumName: this.searchList[index].album.name,
+          name:this.searchList[index].name,
+          singer: this.searchList[index].artists[0].name,
 	    		avatarUrl: this.searchList[index].album.picUrl,
 	    		activeSrc: this.searchList[index].audio,
 	    		activeIndex: index,
@@ -242,6 +244,8 @@ export default {
 	    	this.$store.commit('MUSIC_SONG_CHANGE',{
           id: this.activeList[index].id,
 	    		albumName: this.activeList[index].album.name,
+          name:this.activeList[index].name,
+          singer: this.activeList[index].artists[0].name,
 	    		avatarUrl: this.activeList[index].album.picUrl,
 	    		activeSrc: this.activeList[index].mp3Url,
 	    		activeIndex: index,

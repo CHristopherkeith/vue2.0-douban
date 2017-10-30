@@ -72,7 +72,9 @@ export default {
       if(val){
         console.log('233333333333')
         console.log(this.$refs)
-        this.$refs.music.play()
+        this.$refs.music.play().catch(function(e){
+        console.log(e)
+      }.bind(this))
       } else{
         this.$refs.music.pause()
       }

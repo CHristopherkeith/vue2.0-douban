@@ -65,9 +65,9 @@ export default {
     playList(){
     	return this.$store.state.music.activeList || Store.get("music_list_"+ Store.get('activeListId'))
     },
-    activeIndex(){
-	   	return this.$store.state.music.activeSong.activeIndex;
-	},
+ //    activeIndex(){
+	//    	return this.$store.state.music.activeSong.activeIndex;
+	// },
     activeSong(){
      // 从本地获取歌曲数据
      /* var activeSongLocal = Store.get('activeSong');
@@ -80,16 +80,17 @@ export default {
      	}
    	 }*/
  	 // 从vux获取歌曲数据
-     var lists = this.playList;
-     var index = this.$store.state.music.activeSong.activeIndex || Store.get('activeSong').activeIndex;
-     return {
-     	id: lists && lists[index] && lists[index].id || 0,
-     	name: lists && lists[index] && lists[index].name || '',
-		singer: lists && lists[index] && lists[index].artists && lists[index].artists[0].name || '',
-		duration: this.$store.state.music.activeSong.duration,
-		avatarUrl: lists && lists[index] && lists[index].album.picUrl || '',
-		albumName: lists && lists[index] && "专辑："+lists[index].album.name || ''
-     }
+  //    var lists = this.playList;
+  //    var index = this.$store.state.music.activeSong.activeIndex || Store.get('activeSong').activeIndex;
+  //    return {
+  //    	id: lists && lists[index] && lists[index].id || 0,
+  //    	name: lists && lists[index] && lists[index].name || '',
+		// singer: lists && lists[index] && lists[index].artists && lists[index].artists[0].name || '',
+		// duration: this.$store.state.music.activeSong.duration,
+		// avatarUrl: lists && lists[index] && lists[index].album.picUrl || '',
+		// albumName: lists && lists[index] && "专辑："+lists[index].album.name || ''
+  //    }
+     return this.$store.state.music.activeSong
    },
    playState(){
    	return this.$store.state.music.playing
@@ -242,7 +243,11 @@ export default {
    	 }
    },
    playNext(){
-   		var index = ++this.activeIndex;
+	   	// console.log(this.activeIndex)
+	   	var activeIndex = this.$store.state.music.activeSong.activeIndex;
+	   	// console.log(activeIndex)
+   		var index = ++activeIndex;
+   		// console.log(index)
    		index = index < 0 ? 0 : index;
    		index = index > this.playList.length-1 ? this.playList.length-1 : index;
 
@@ -253,18 +258,21 @@ export default {
     		activeSrc: this.playList[index].mp3Url,
     		activeIndex: index,
     		duration: this.playList[index].duration,
-    		playing: true
+    		playing: true,
+    		albumName: this.playList[index].album.name,
+			name: this.playList[index].name,
+			singer: this.playList[index].artists[0].name,
     	})
 
     	/*更改视图歌曲信息*/
-    	this.activeSong = {
-    		id: this.playList[index].id,
-			name: this.playList[index].name,
-			singer: this.playList[index].artists[0].name,
-			avatarUrl: this.playList[index].album.picUrl,
-			duration: this.playList[index].duration,
-			activeIndex: index
-    	}
+   //  	this.activeSong = {
+   //  		id: this.playList[index].id,
+			// name: this.playList[index].name,
+			// singer: this.playList[index].artists[0].name,
+			// avatarUrl: this.playList[index].album.picUrl,
+			// duration: this.playList[index].duration,
+			// activeIndex: index
+   //  	}
 
     	/*更改本地歌曲信息*/
     	Store.set('activeSong',{
@@ -300,17 +308,30 @@ export default {
 
    },
    playPrev(){
-   		var index = --this.activeIndex;
+   		// var index = --this.activeIndex;
+   		var activeIndex = this.$store.state.music.activeSong.activeIndex;
+   		index = --activeIndex;
    		index = index < 0 ? 0 : index;
    		index = index > this.playList.length-1 ? this.playList.length-1 : index;
    		/*提交MUSIC_SONG_CHANGE的mutation*/
+    	// this.$store.commit('MUSIC_SONG_CHANGE',{
+    	// 	id: this.playList[index].id,
+    	// 	avatarUrl: this.playList[index].album.picUrl,
+    	// 	activeSrc: this.playList[index].mp3Url,
+    	// 	activeIndex: index,
+    	// 	duration: this.playList[index].duration,
+    	// 	playing: true
+    	// })
     	this.$store.commit('MUSIC_SONG_CHANGE',{
     		id: this.playList[index].id,
     		avatarUrl: this.playList[index].album.picUrl,
     		activeSrc: this.playList[index].mp3Url,
     		activeIndex: index,
     		duration: this.playList[index].duration,
-    		playing: true
+    		playing: true,
+    		albumName: this.playList[index].album.name,
+			name: this.playList[index].name,
+			singer: this.playList[index].artists[0].name,
     	})
 
     	/*更改视图歌曲信息*/

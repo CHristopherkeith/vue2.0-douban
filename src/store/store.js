@@ -15,6 +15,9 @@ const store = new Vuex.Store({
 			activeSong:{
 				id: '',
 				activeSrc: '',
+				name: '',
+				singer: '',
+				albumName: '',
 				activeIndex: '',
 				duration: '',
 				avatarUrl:'',
@@ -86,6 +89,10 @@ const store = new Vuex.Store({
 			state.music.activeSong.duration = payload.duration;
 			state.music.activeSong.avatarUrl = payload.avatarUrl;
 			state.music.activeSong.id = payload.id;
+			state.music.activeSong.albumName = payload.albumName;
+			state.music.activeSong.name = payload.name;
+			state.music.activeSong.singer = payload.singer;
+
 		},
 		// 音乐播放状态改变
 		[types.PLAY_STATE_CHANGE](state,payload){
