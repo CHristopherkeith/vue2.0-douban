@@ -2,7 +2,7 @@
 	<div id="movie-detail">
 		<md-theme :md-name="theme">
 			<headerBack :title="movieDetail.title"></headerBack>
-			<!-- <md-spinner :md-size="60" md-indeterminate v-show='spinnerFlag'></md-spinner> -->
+			<md-spinner :md-size="60" md-indeterminate v-show='spinnerFlag'></md-spinner>
 			<md-card class="card-movie-detail" v-show='!spinnerFlag'>
 			 <md-card-area md-inset>
 			   <!-- <md-card-media md-ratio="9:16">
