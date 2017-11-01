@@ -2,12 +2,12 @@
 	<div id="movie-detail">
 		<md-theme :md-name="theme">
 			<headerBack :title="movieDetail.title"></headerBack>
-			<md-spinner :md-size="60" md-indeterminate v-show='spinnerFlag'></md-spinner>
+			<!-- <md-spinner :md-size="60" md-indeterminate v-show='spinnerFlag'></md-spinner> -->
 			<md-card class="card-movie-detail" v-show='!spinnerFlag'>
 			 <md-card-area md-inset>
-			   <md-card-media md-ratio="9:16">
+			   <!-- <md-card-media md-ratio="9:16">
 			     <img :src="movieDetail.images ? movieDetail.images.large : ''" alt="Coffee House">
-			   </md-card-media>
+			   </md-card-media> -->
 				
 			   <md-card-header>
 			     <h2 class="md-title">{{movieDetail.title}}</h2>
@@ -25,9 +25,9 @@
 			 <md-card-content>
 			   <h3 class="md-subheading">导演：{{movieDetail.directors ? movieDetail.directors[0].name : ''}}</h3>
 			   <div class="card-reservation">
-			     <md-avatar>
+			     <!-- <md-avatar>
 			         <img :src="movieDetail.directors ? movieDetail.directors[0].avatars.medium : ''" alt="director">
-			     </md-avatar>
+			     </md-avatar> -->
 			    
 			   </div>
 			 </md-card-content>

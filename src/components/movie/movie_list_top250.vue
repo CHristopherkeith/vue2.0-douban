@@ -3,9 +3,9 @@
   <div class="j-content">
     <md-list class="custom-list md-triple-line">
         <md-list-item v-for="movie in movieLists" @click="getMovieDetail(movie.id)">
-            <md-avatar>
+            <!-- <md-avatar>
               <img :src="movie.images.large" alt="People">
-            </md-avatar>
+            </md-avatar> -->
 
             <div class="md-list-text-container">
               <span>{{movie.title}}</span>
@@ -63,6 +63,7 @@ export default {
   },
   methods: {
     getMovieDetail(id){
+      // debugger;
       this.$router.push({ name: 'movie-detail', params: { id: id }})
     },
   	isTouchScreenBtm: function(e){
@@ -86,7 +87,7 @@ export default {
       this.spinnerFlag = true;
       axios.get(API_PROXY+'https://api.douban.com/v2/movie/top250?count=10&start='+start)
 		  .then(function(res) {
-		  	console.log("请求成功");
+		  	// console.log("请求成功");
 		    res.data.subjects.forEach(movie=>{
 		    	this.movieLists.push(movie);
 		    })

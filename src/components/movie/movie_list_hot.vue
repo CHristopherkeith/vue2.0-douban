@@ -3,9 +3,9 @@
   <div class="j-content">
    <md-list class="custom-list md-triple-line">
      <md-list-item v-for="movie in movieLists" @click="getMovieDetail(movie.id)">
-         <md-avatar>
+         <!-- <md-avatar>
            <img :src="movie.images.large" alt="People">
-         </md-avatar>
+         </md-avatar> -->
    
          <div class="md-list-text-container">
            <span>{{movie.title}}</span>
